@@ -41,7 +41,8 @@ if (array_key_exists("signUp", $_POST)) {
     else {
       //Password encryption or Password Hashing
       $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-      $query = "INSERT INTO users (username, user_phone,sport_type , user_password) VALUES ('$name', '$phone','$sport' ,'$password')";
+      $query = "INSERT INTO users (username, user_phone,sport_type , user_password)
+       VALUES ('$name', '$phone','$sport' ,'$password')";
 
       if (!mysqli_query($conn, $query)) {
         $error = "<p>Could not sign you up - please try again.</p>";
@@ -157,4 +158,36 @@ $error3 = "";
            }
     }
 }
+
+//-------admin Login PHP Code ------------
+if (array_key_exists("adm_log", $_POST)) {
+
+  // Database Link
+include('linkDB.php');
+$error3 = "";
+  //Taking form Data From User
+    $username = $_POST['username']; 
+     $password = $_POST['password'];
+     echo $username;
+  //Check if input Field are empty 
+   if (!$username) {   
+     $error4 = "username is required <br>"; 
+     }  
+     if (!$password) { 
+         $error4 = "Password is required <br>"; 
+    }
+      if ($error4 != null) { 
+           echo $error4 = "<b>There were error(s) in your form!</b><br>" . $error4; 
+           } else { 
+               if ($password=="kh_admin"&&$username=="kh_admin") {
+                  $_SESSION['admin_auth']=$username;
+                  header('Location:dashboard.php');
+               }
+               else{
+                    $error3="خطأ في كلمة المرور او اسم المستخدم";
+                    echo $error3 = "<b>There were error(s) in your form!</b><br>" . $error3;
+                  }
+    }
+}
+
 ?>

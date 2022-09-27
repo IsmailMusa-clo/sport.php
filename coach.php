@@ -1,7 +1,16 @@
 <?php
 include('include/linkDB.php');
-include('include/sess.php');
+include('include/c_sess.php');
 include('include/authC.php');
+$s_n = $_SESSION['sport'];
+$telgram = "";
+$sql = "SELECT * FROM sports WHERE sport_name='$s_n'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+// echo $row['sport_telgram'];
+if (isset($row)) {
+    $telgram = $row['sport_telgram'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
@@ -34,7 +43,7 @@ include('include/authC.php');
                 <div class="btn-group">
 
                     <button type="button" class="btn btn-light">
-                        <?= $_SESSION['name']?>
+                        <?= $_SESSION['Cname']?>
                     </button>
                     <button type="button" class="btn btn-light  dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown">
@@ -44,7 +53,7 @@ include('include/authC.php');
                         <a href="#" class="dropdown-item">
                             <?= $_SESSION['sport']?>
                         </a>
-                        <a href="<?=$_SESSION['telg']?>" target="_blank" class="dropdown-item">قناة التيلجرام</a>
+                        <a href="<?=$telgram?>" target="_blank" class="dropdown-item">قناة التيلجرام</a>
                         <div class="dropdown-divider"></div>
                         <a href="include/logout.php" class="dropdown-item">تسجيل الخروج</a>
                     </div>

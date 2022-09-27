@@ -11,6 +11,27 @@ $row = mysqli_fetch_array($result);
   if (isset($row)){
  $telgram =$row['sport_telgram'] ;
   }
+  //-------update user sport PHP Code ------------
+if (array_key_exists("update", $_POST)) {
+    $error4 = "";
+    //Taking form Data From User
+    $new_sport = $_POST['sport'];
+    //Check if input Field are empty 
+    if (!$new_sport) {
+        $error4 = "username is required <br>";
+    }
+    if ($error4 != null) {
+        echo $error3 = "<b>There were error(s) in your form!</b><br>" . $error3;
+    }
+    else {
+        $id = $_SESSION['id'];
+        $query = "UPDATE `users` SET `sport_type`='$new_sport' WHERE `user_id` ='$id'";
+        $result = mysqli_query($conn, $query);
+        header("Location:include/logout.php");
+    }
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
@@ -62,6 +83,22 @@ $row = mysqli_fetch_array($result);
                         <div class="registration1">
                             <h1><?=$_SESSION["name"]?></h1>
                             <p><?=$_SESSION["sport"]?> <a href="<?=$telgram?>">تيلجرام</a></p>
+                            <form action="" method="post" style="display:flex;align-items:center">
+                                <div class="input-wrapper" style="margin-top:30px;">
+                                    <select class="form-select" name="sport" aria-label="Default select example">
+                                        <option selected>تعديل الرياضة</option>
+                                        <option value="كرة قدم">كرة القدم</option>
+                                        <option value="كرة السلة">كرة السلة</option>
+                                        <option value="سباحة">السباحة</option>
+                                        <option value="تنس">تنس أرضي</option>
+                                        <option value="بلياردو">بلياردو</option>
+                                    </select>
+                                    
+                                </div>
+                                <button name="update" class="button-style w-20" style="display:inline-block;height:40px">
+                                    تعديل
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

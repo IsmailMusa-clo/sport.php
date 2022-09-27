@@ -34,6 +34,7 @@ include('include/linkDB.php');
                         <li class="nav-item"> <a href="#">الصفحة الرئيسية</a></li>
                         <li class="nav-item"> <a href="#sports">الرياضات</a></li>
                         <li class="nav-item"> <a href="coach.php">المدربون</a></li>
+                        <li class="nav-item"> <a href="dashboard.php">لوحة التحكم</a></li>
                         <li class="nav-item"> <a href="#contact">تواصل معنا</a></li>
                     </ul>
                 </div>
@@ -45,6 +46,7 @@ include('include/linkDB.php');
                     <li class="nav-item"> <a href="#">الصفحة الرئيسية</a></li>
                     <li class="nav-item"> <a href="#sports">الرياضات</a></li>
                     <li class="nav-item"> <a href="coach.php">المدربون</a></li>
+                    <li class="nav-item"> <a href="dashboard.php">لوحة التحكم</a></li>
                     <li class="nav-item"> <a href="#contact">تواصل معنا</a></li>
                 </ul>
                 <a class="bt-togg" href="users.php">تسجيل الدخول</a>
@@ -164,7 +166,7 @@ include('include/linkDB.php');
     <!--  End section Connect us -->
     <footer>
         <p>&#xA9 جميع الحقوق محفوظة لدى</p>
-        <a href="#">.KH</a>
+        <a href="">.KH</a>
     </footer>
     <!-- js code -->
     <script src="assets/js/jquery.js"></script>
